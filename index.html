@@ -1,47 +1,129 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>MMU</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0e0e0e;
-      color: white;
-      text-align: center;
-    }
-    .container {
-      padding: 100px 20px;
-    }
-    h1 {
-      font-size: 48px;
-      letter-spacing: 4px;
-    }
-    p {
-      color: #aaa;
-      font-size: 18px;
-    }
-    a {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 12px 25px;
-      border: 1px solid white;
-      text-decoration: none;
-      color: white;
-      transition: 0.3s;
-    }
-    a:hover {
-      background: white;
-      color: black;
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MMU — Micah Media Universe</title>
+  <meta name="description" content="MMU: instrumentals, sync catalog, books, drum kits, song starters, and a live news board from Micah and collaborators." />
+  <link rel="stylesheet" href="assets/styles.css" />
 </head>
+
 <body>
-  <div class="container">
-    <h1>MICAH</h1>
-    <p>Producer • Songwriter • Sync</p>
-    <a href="mailto:youremail@email.com">Contact</a>
+  <!-- TOP NAV -->
+  <div class="nav">
+    <div class="wrap" style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
+      <a class="brand" href="index.html">
+        <span class="dot"></span><span>MMU</span>
+      </a>
+
+      <div class="links">
+        <a href="instrumentals.html">Instrumentals</a>
+        <a href="sync.html">Sync</a>
+        <a href="books.html">Books</a>
+        <a href="kits.html">Drum Kits</a>
+        <a href="starters.html">Song Starters</a>
+        <a href="news.html">News Board</a>
+        <a href="contact.html">Licensing</a>
+      </div>
+    </div>
   </div>
+
+  <div class="wrap">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="badge">One-stop shop • Music + Film + Tools</div>
+      <div class="kicker" style="margin-top:14px;">MICAH MEDIA UNIVERSE</div>
+
+      <h1 class="h1">The hub for instrumentals, sync-ready music, and creative drops.</h1>
+
+      <p class="sub">
+        MMU is where Micah and collaborators publish instrumentals, sync catalog cuts, drum kits,
+        song starters, books, and updates across the universe — all in one place.
+      </p>
+
+      <div class="btns" style="margin-top:18px;">
+        <a class="btn primary" href="instrumentals.html">Browse Instrumentals</a>
+        <a class="btn" href="sync.html">Open Sync Catalog</a>
+        <a class="btn" href="news.html">See What’s New</a>
+      </div>
+    </section>
+
+    <!-- QUICK LINKS GRID -->
+    <section class="grid">
+      <div class="card">
+        <h3>Instrumentals</h3>
+        <p>Leases, exclusives, and curated packs. Clean, modern, ready to record.</p>
+        <div class="btns">
+          <a class="btn primary" href="instrumentals.html">Shop Instrumentals</a>
+          <a class="btn" href="contact.html">Custom Request</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Sync</h3>
+        <p>Film/TV/ads/social-ready tracks. Fast clearance, stems on request.</p>
+        <div class="btns">
+          <a class="btn primary" href="sync.html">Browse Sync</a>
+          <a class="btn" href="contact.html">License a Track</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Drum Kits</h3>
+        <p>808s, drums, textures, and loops designed for your sound. Instant access links.</p>
+        <div class="btns">
+          <a class="btn primary" href="kits.html">Get Kits</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Song Starters</h3>
+        <p>Hooks, chord beds, and ideas you can flip fast. Perfect for sessions and content.</p>
+        <div class="btns">
+          <a class="btn primary" href="starters.html">Browse Starters</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Books</h3>
+        <p>Scripts, stories, concepts — and everything narrative inside the MMU universe.</p>
+        <div class="btns">
+          <a class="btn primary" href="books.html">Explore Books</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>News Board</h3>
+        <p>New drops, film updates, collabs, calls for placements, and announcements.</p>
+        <div class="btns">
+          <a class="btn primary" href="news.html">Open News</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURE STRIP -->
+    <section class="grid" style="margin-top:-10px;">
+      <div class="card" style="grid-column:span 12;">
+        <h3>Fast licensing + clean deliverables</h3>
+        <p>
+          If you need a track cleared quickly: send the track code + usage details.
+          MMU can provide alt mixes, stems, and clean edits when available.
+        </p>
+        <div class="btns">
+          <a class="btn primary" href="contact.html">Licensing / Contact</a>
+          <a class="btn" href="sync.html">Find a Track</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      © <span id="y"></span> MMU • Built on GitHub Pages •
+      <a href="contact.html" style="text-decoration:underline;">Business & licensing</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
