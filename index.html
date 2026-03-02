@@ -9,324 +9,162 @@
 </head>
 
 <body>
-  <!-- TOPBAR + NAV DOCK -->
-  <div class="topbar">
-    <div class="topbar-inner">
-      <a class="brand-title" href="index.html">
-        <span class="dot"></span><span>MMU</span>
-        <small>Creative ecosystem</small>
-      </a>
-
-      <button class="iconbtn" id="mmuOpen" aria-label="Open menu">☰</button>
-    </div>
-
-    <div class="navdock">
-      <a class="pill" href="instrumentals.html">Instrumentals</a>
-      <a class="pill" href="sync.html">Sync</a>
-      <a class="pill" href="books.html">Editorial</a>
-      <a class="pill" href="kits.html">Drum Kits</a>
-      <a class="pill" href="starters.html">Song Starters</a>
-      <a class="pill" href="news.html">News Board</a>
-      <a class="pill" href="contact.html">Licensing</a>
-    </div>
-  </div>
-
-  <!-- MOBILE DRAWER -->
-  <div class="drawer" id="mmuDrawer" aria-hidden="true">
-    <div class="drawer-panel">
-      <div style="display:flex; align-items:center; justify-content:space-between; gap:10px;">
-        <h3 style="margin:0;">Menu</h3>
-        <button class="iconbtn" id="mmuClose" aria-label="Close menu" style="display:inline-flex;">✕</button>
+  <div class="vst">
+    <!-- PLUGIN TOP BAR -->
+    <div class="vst-top">
+      <div>
+        <div class="vst-brand"><span class="dot"></span><span>MMU</span></div>
+        <div class="vst-meta">Creative Ecosystem • v0.1 • GitHub Pages</div>
       </div>
 
-      <div style="margin-top:14px;">
-        <a href="instrumentals.html">Instrumentals <span>leases + exclusives</span></a>
-        <a href="sync.html">Sync <span>license-ready</span></a>
-        <a href="books.html">Editorial <span>ideas + lifestyle</span></a>
-        <a href="kits.html">Drum Kits <span>tools</span></a>
-        <a href="starters.html">Song Starters <span>hooks + beds</span></a>
-        <a href="news.html">News Board <span>updates</span></a>
-        <a href="contact.html">Licensing <span>contact</span></a>
+      <div class="vst-buttons">
+        <a class="vst-btn" href="news.html">Updates</a>
+        <a class="vst-btn" href="contact.html">Licensing</a>
+        <div class="power">⏻</div>
       </div>
     </div>
-  </div>
 
-  <div class="wrap">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="badge">One-stop shop • Music + Film + Tools</div>
-      <div class="kicker" style="margin-top:14px;">MMU</div>
+    <div class="vst-body">
+      <!-- LEFT: PRESET BROWSER -->
+      <aside class="browser">
+        <h4>Browser</h4>
 
-      <h1 class="h1">A creative infrastructure for music, film, and tools.</h1>
+        <a class="preset" href="instrumentals.html">
+          <div>Instrumentals</div><small>leases + exclusives</small>
+        </a>
 
-      <p class="sub">
-        MMU connects music, sync-ready assets, production tools, editorial work, and creative drops into one evolving ecosystem —
-        built for collaborators, artists, filmmakers, and builders.
-      </p>
+        <a class="preset" href="sync.html">
+          <div>Sync</div><small>license-ready</small>
+        </a>
 
-      <div class="btns" style="margin-top:18px;">
-        <a class="btn primary" href="instrumentals.html">Browse Instrumentals</a>
-        <a class="btn" href="sync.html">Open Sync Catalog</a>
-        <a class="btn" href="news.html">See What’s New</a>
-      </div>
+        <a class="preset" href="books.html">
+          <div>Editorial</div><small>ideas + lifestyle</small>
+        </a>
 
-      <div class="btns" style="margin-top:14px;">
-        <span class="badge">Music</span>
-        <span class="badge">Sync</span>
-        <span class="badge">Tools</span>
-        <span class="badge">Editorial</span>
-        <span class="badge">Drops</span>
-        <span class="badge">Collaborations</span>
-      </div>
-    </section>
+        <a class="preset" href="kits.html">
+          <div>Drum Kits</div><small>tools</small>
+        </a>
 
-    <hr style="border:none; border-top:1px solid #222235; margin: 18px 0 6px;">
+        <a class="preset" href="starters.html">
+          <div>Song Starters</div><small>hooks + beds</small>
+        </a>
 
-    <!-- QUICK LINKS GRID -->
-    <section class="grid">
-      <!-- Instrumentals -->
-      <div class="card" data-expand="card">
-        <div class="card-top">
-          <h3>Instrumentals</h3>
-          <span class="chip">Production assets</span>
-        </div>
-        <p>Leases, exclusives, and curated packs — clean, modern, ready to record.</p>
+        <a class="preset" href="news.html">
+          <div>News Board</div><small>announcements</small>
+        </a>
+      </aside>
 
-        <div class="btns">
-          <a class="btn primary" href="instrumentals.html">Shop Instrumentals</a>
-          <a class="btn" href="contact.html">Custom Request</a>
-        </div>
+      <!-- CENTER: DISPLAY -->
+      <main class="display">
+        <div class="screen">
+          <div class="kicker-vst">MMU INTERFACE</div>
 
-        <div class="more">
-          <p>Open for custom production, revisions, and session-ready packs. Stems/alt mixes available when needed.</p>
-          <div class="btns">
-            <a class="btn" href="news.html">Latest Drops</a>
-            <a class="btn" href="contact.html">Brief / Request</a>
+          <h1>Create. License. Build.</h1>
+          <p>
+            MMU is a creator-facing ecosystem for music, sync assets, tools, editorial work, and creative drops —
+            designed for collaborators, artists, filmmakers, and builders.
+          </p>
+
+          <div class="actions">
+            <a class="action primary" href="instrumentals.html">Open Instrumentals</a>
+            <a class="action" href="sync.html">Open Sync Catalog</a>
+            <a class="action" href="news.html">What’s New</a>
+          </div>
+
+          <div class="rack">
+            <div class="module">
+              <h3>Instrumentals</h3>
+              <p>Clean packs + exclusives. Session-ready.</p>
+              <div class="mini">
+                <a href="instrumentals.html">Browse</a>
+                <a href="contact.html">Custom</a>
+              </div>
+            </div>
+
+            <div class="module">
+              <h3>Sync</h3>
+              <p>Fast clearance. Clean deliverables.</p>
+              <div class="mini">
+                <a href="sync.html">Browse</a>
+                <a href="contact.html">License</a>
+              </div>
+            </div>
+
+            <div class="module">
+              <h3>Editorial</h3>
+              <p>Articles, lesson plans, philosophy, lifestyle.</p>
+              <div class="mini">
+                <a href="books.html">Open</a>
+                <a href="contact.html">Pitch</a>
+              </div>
+            </div>
+
+            <div class="module">
+              <h3>Tools</h3>
+              <p>Drum kits + song starters to move fast.</p>
+              <div class="mini">
+                <a href="kits.html">Kits</a>
+                <a href="starters.html">Starters</a>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="hint">Click card to expand</div>
-      </div>
+      </main>
 
-      <!-- Sync -->
-      <div class="card" data-expand="card">
-        <div class="card-top">
-          <h3>Sync</h3>
-          <span class="chip">License-ready</span>
-        </div>
-        <p>Film/TV/ads/social-ready tracks — fast clearance, clean deliverables.</p>
+      <!-- RIGHT: CONTROL RACK -->
+      <aside class="controls">
+        <h4>Control Rack</h4>
 
-        <div class="btns">
-          <a class="btn primary" href="sync.html">Browse Sync</a>
-          <a class="btn" href="contact.html">License a Track</a>
+        <div class="control">
+          <label><span>Mood</span><span class="readout">Cinematic</span></label>
+          <input type="range" min="0" max="100" value="62" />
         </div>
 
-        <div class="more">
-          <p>Need a specific mood? Send references + deadline. We can deliver cutdowns, clean edits, and stems when available.</p>
-          <div class="btns">
-            <a class="btn" href="contact.html">Send a Brief</a>
-            <a class="btn" href="news.html">Recent Adds</a>
+        <div class="control">
+          <label><span>BPM</span><span class="readout">140</span></label>
+          <input type="range" min="60" max="200" value="140" />
+        </div>
+
+        <div class="control">
+          <label><span>Key</span><span class="readout">F#</span></label>
+          <input type="range" min="0" max="11" value="6" />
+        </div>
+
+        <div class="control">
+          <label><span>Usage</span><span class="readout">Sync</span></label>
+          <input type="range" min="0" max="100" value="78" />
+        </div>
+
+        <div class="control">
+          <label><span>Quick Action</span><span class="readout">Request</span></label>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="action primary" href="contact.html">Send Brief</a>
+            <a class="action" href="sync.html">Find Track</a>
           </div>
         </div>
-        <div class="hint">Click card to expand</div>
+      </aside>
+    </div>
+
+    <!-- TRANSPORT -->
+    <div class="transport">
+      <div class="left">
+        <span class="vst-btn">⏮</span>
+        <span class="vst-btn">▶</span>
+        <span class="vst-btn">■</span>
+        <span class="vst-btn">A/B</span>
       </div>
 
-      <!-- Drum Kits -->
-      <div class="card" data-expand="card">
-        <div class="card-top">
-          <h3>Drum Kits</h3>
-          <span class="chip">Tools</span>
-        </div>
-        <p>808s, drums, textures, and loops designed for your sound — instant access.</p>
+      <div class="meter"><span></span></div>
 
-        <div class="btns">
-          <a class="btn primary" href="kits.html">Get Kits</a>
-        </div>
-
-        <div class="more">
-          <p>Packs are organized for speed: clean folders, ready-to-use one-shots, and session-friendly naming.</p>
-          <div class="btns">
-            <a class="btn" href="news.html">New Packs</a>
-            <a class="btn" href="contact.html">Kit Request</a>
-          </div>
-        </div>
-        <div class="hint">Click card to expand</div>
+      <div class="right">
+        <span class="vst-meta">Output</span>
+        <span class="vst-btn">-6.0 dB</span>
       </div>
-
-      <!-- Song Starters -->
-      <div class="card" data-expand="card">
-        <div class="card-top">
-          <h3>Song Starters</h3>
-          <span class="chip">Sessions</span>
-        </div>
-        <p>Hooks, chord beds, and ideas you can flip fast — perfect for sessions and content.</p>
-
-        <div class="btns">
-          <a class="btn primary" href="starters.html">Browse Starters</a>
-        </div>
-
-        <div class="more">
-          <p>Designed for momentum: strong first 8 bars, clear vibe, and room for the artist to lead.</p>
-          <div class="btns">
-            <a class="btn" href="news.html">Newest Starters</a>
-            <a class="btn" href="contact.html">Starter Brief</a>
-          </div>
-        </div>
-        <div class="hint">Click card to expand</div>
-      </div>
-
-      <!-- Editorial -->
-      <div class="card" data-expand="card">
-        <div class="card-top">
-          <h3>Editorial</h3>
-          <span class="chip">Ideas</span>
-        </div>
-        <p>Articles, lesson plans, philosophy, and lifestyle perspectives shaping the ecosystem.</p>
-
-        <div class="btns">
-          <a class="btn primary" href="books.html">Open Editorial</a>
-        </div>
-
-        <div class="more">
-          <p>Frameworks, reflections, and practical guides — built to be shared, taught, and lived.</p>
-          <div class="btns">
-            <a class="btn" href="news.html">Latest Posts</a>
-            <a class="btn" href="contact.html">Submit / Pitch</a>
-          </div>
-        </div>
-        <div class="hint">Click card to expand</div>
-      </div>
-
-      <!-- News Board -->
-      <div class="card" data-expand="card">
-        <div class="card-top">
-          <h3>News Board</h3>
-          <span class="chip">Updates</span>
-        </div>
-        <p>New drops, film updates, collabs, calls for placements, and announcements.</p>
-
-        <div class="btns">
-          <a class="btn primary" href="news.html">Open News</a>
-        </div>
-
-        <div class="more">
-          <p>Keep this updated and the entire site feels alive. Announce releases, briefs, and collaborator highlights here.</p>
-          <div class="btns">
-            <a class="btn" href="contact.html">Post an Update</a>
-            <a class="btn" href="sync.html">Find a Track</a>
-          </div>
-        </div>
-        <div class="hint">Click card to expand</div>
-      </div>
-    </section>
-
-    <!-- FEATURE STRIP -->
-    <section class="grid" style="margin-top:-10px;">
-      <div class="card" style="grid-column:span 12;">
-        <h3>Fast licensing + clean deliverables</h3>
-        <p>
-          If you need a track cleared quickly: send the track code + usage details.
-          Deliverables can include alt mixes, stems, and clean edits when available.
-        </p>
-        <div class="btns">
-          <a class="btn primary" href="contact.html">Licensing / Contact</a>
-          <a class="btn" href="sync.html">Find a Track</a>
-        </div>
-      </div>
-    </section>
-
-    <p class="sub" style="text-align:center; margin-top:60px;">
-      MMU is independently built and operated. All music, assets, and editorial work are original creations or properly credited collaborations.
-    </p>
-
-    <div class="footer">
-      © <span id="y"></span> MMU • Built on GitHub Pages •
-      <a href="contact.html" style="text-decoration:underline;">Business & licensing</a>
     </div>
   </div>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    // optional: nothing required yet
   </script>
-  <script src="assets/mmu.js"></script>
-</body>
-</html>
-    <!-- QUICK LINKS GRID -->
-    <section class="grid">
-      <div class="card" data-expand="card">
-        <h3>Instrumentals</h3>
-        <p>Leases, exclusives, and curated packs. Clean, modern, ready to record.</p>
-        <div class="btns">
-          <a class="btn primary" href="instrumentals.html">Shop Instrumentals</a>
-          <a class="btn" href="contact.html">Custom Request</a>
-        </div>
-      </div>
-
-     <div class="card" data-expand="card">
-        <h3>Sync</h3>
-        <p>Film/TV/ads/social-ready tracks. Fast clearance, stems on request.</p>
-        <div class="btns">
-          <a class="btn primary" href="sync.html">Browse Sync</a>
-          <a class="btn" href="contact.html">License a Track</a>
-        </div>
-      </div>
-
-    <div class="card" data-expand="card">
-        <h3>Drum Kits</h3>
-        <p>808s, drums, textures, and loops designed for your sound. Instant access links.</p>
-        <div class="btns">
-          <a class="btn primary" href="kits.html">Get Kits</a>
-        </div>
-      </div>
-
-     <div class="card" data-expand="card">
-        <h3>Song Starters</h3>
-        <p>Hooks, chord beds, and ideas you can flip fast. Perfect for sessions and content.</p>
-        <div class="btns">
-          <a class="btn primary" href="starters.html">Browse Starters</a>
-        </div>
-      </div>
-
-     <div class="card" data-expand="card">
-        <h3>Editorial</h3>
-        <p>Articles, lesson plans, philosophy, and lifestyle perspectives shaping the ecosystem.</p>
-        <div class="btns">
-          <a class="btn primary" href="books.html">Explore Books</a>
-        </div>
-      </div>
-
-    <div class="card" data-expand="card">
-        <h3>News Board</h3>
-        <p>New drops, film updates, collabs, calls for placements, and announcements.</p>
-        <div class="btns">
-          <a class="btn primary" href="news.html">Open News</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- FEATURE STRIP -->
-    <section class="grid" style="margin-top:-10px;">
-      <div class="card" style="grid-column:span 12;">
-        <h3>Fast licensing + clean deliverables</h3>
-        <p>
-          If you need a track cleared quickly: send the track code + usage details.
-          MMU can provide alt mixes, stems, and clean edits when available.
-        </p>
-        <div class="btns">
-          <a class="btn primary" href="contact.html">Licensing / Contact</a>
-          <a class="btn" href="sync.html">Find a Track</a>
-        </div>
-      </div>
-    </section>
-
-    <div class="footer">
-      © <span id="y"></span> MMU • Built on GitHub Pages •
-      <a href="contact.html" style="text-decoration:underline;">Business & licensing</a>
-    </div>
-  </div>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
-<script src="assets/mmu.js"></script>
 </body>
 </html>
