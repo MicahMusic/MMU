@@ -736,3 +736,7 @@ body{
   opacity:.20;
   pointer-events:none;
 }
+/* ===== DEBUG: if you don't see hot pink border, CSS isn't loading ===== */
+.vst { outline: 6px solid hotpink !important; }
+.vst-top { outline: 4px solid lime !important; }
+.screen { outline: 4px solid cyan !important; }
