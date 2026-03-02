@@ -535,3 +535,120 @@ body{
   .rack{ grid-template-columns: 1fr; }
   .screen h1{ font-size: 34px; }
 }
+/* ===== VST REALISM UPGRADE ===== */
+
+/* Subtle brushed/painted metal noise using layered gradients (no images) */
+.vst{
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0) 40%),
+    radial-gradient(1400px 800px at 50% 0%, rgba(255,255,255,.05), transparent 55%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.02) 0 1px, rgba(0,0,0,0) 1px 4px),
+    var(--panel2);
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow:
+    0 40px 120px rgba(0,0,0,.70),
+    inset 0 1px 0 rgba(255,255,255,.06);
+}
+
+/* Add “screws” to corners */
+.vst::before{
+  content:"";
+  position:absolute;
+  inset: 0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 18px 18px, rgba(255,255,255,.25) 0 2px, rgba(0,0,0,0) 3px),
+    radial-gradient(circle at calc(100% - 18px) 18px, rgba(255,255,255,.25) 0 2px, rgba(0,0,0,0) 3px),
+    radial-gradient(circle at 18px calc(100% - 18px), rgba(255,255,255,.25) 0 2px, rgba(0,0,0,0) 3px),
+    radial-gradient(circle at calc(100% - 18px) calc(100% - 18px), rgba(255,255,255,.25) 0 2px, rgba(0,0,0,0) 3px);
+  opacity:.35;
+}
+.vst{ position:relative; }
+
+/* Top bar feels like hardware */
+.vst-top{
+  box-shadow: inset 0 -1px 0 rgba(255,255,255,.04);
+}
+.power{
+  position: relative;
+}
+.power::after{
+  content:"";
+  position:absolute;
+  inset: -6px;
+  border-radius: 14px;
+  background: radial-gradient(circle, rgba(124,92,255,.20), transparent 60%);
+  filter: blur(10px);
+  opacity:.9;
+  z-index:-1;
+}
+
+/* Preset browser: make items feel like a real browser list */
+.preset{
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
+}
+.preset:active{ transform: translateY(1px); }
+
+/* Screen glass + scanline vibe */
+.screen{
+  position: relative;
+  overflow:hidden;
+}
+.screen::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,0) 18%),
+    repeating-linear-gradient(180deg, rgba(255,255,255,.015) 0 1px, rgba(0,0,0,0) 1px 4px);
+  opacity:.55;
+}
+.screen::after{
+  content:"";
+  position:absolute;
+  inset:-80px;
+  pointer-events:none;
+  background: radial-gradient(circle at 30% 10%, rgba(124,92,255,.20), transparent 55%);
+  filter: blur(40px);
+  opacity:.55;
+}
+
+/* Module units like rack hardware */
+.module{
+  border: 1px solid rgba(255,255,255,.06);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.04),
+    0 10px 30px rgba(0,0,0,.35);
+}
+.module .mini a{
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.03);
+}
+.module .mini a:hover{
+  border-color: rgba(124,92,255,.35);
+}
+
+/* Transport buttons: more tactile */
+.vst-btn{
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.05),
+    0 8px 18px rgba(0,0,0,.35);
+}
+.vst-btn:active{ transform: translateY(1px); }
+
+/* Meter: add ticks */
+.meter{
+  position:relative;
+}
+.meter::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,.10) 0 1px, rgba(0,0,0,0) 1px 14px);
+  opacity:.20;
+  pointer-events:none;
+}
+
+/* Make the whole thing feel “UI crisp” */
+.screen h1{ letter-spacing: -0.02em; }
+.vst-meta{ opacity:.95; }
