@@ -18,6 +18,10 @@
     return `${n>0?"+":""}${n.toFixed(1)} dB`;
   };
 
+  // knob travel: -135deg to +135deg (270°)
+  const MIN_ANGLE = -135;
+  const MAX_ANGLE = 135;
+
   function setActiveNav(){
     const file = (location.pathname || "").toLowerCase().split("/").pop() || "index.html";
     $$(".nav__link").forEach(a=>{
@@ -32,7 +36,7 @@
     if (powerBtn) powerBtn.setAttribute("aria-pressed", String(!!on));
 
     const enable = (sel, yes) => $$(sel, root).forEach(el => el.disabled = !yes);
-    enable('[data-control]', on);
+    enable('[data-control="preset"]', on);
     enable('[data-action="play"]', on);
     enable('[data-action="stop"]', on);
     enable('[data-action="storeA"]', on);
@@ -40,9 +44,11 @@
     enable('[data-action="storeB"]', on);
     enable('[data-action="recallB"]', on);
     enable('[data-action="reset"]', on);
+    enable('input[data-control-input]', on);
 
     const status = $('[data-readout="status"]', root);
     const hint = $('[data-readout="hint"]', root);
+
     if (!on){
       if (status) status.textContent = "STANDBY";
       if (hint) hint.textContent = "Power on to enable controls.";
@@ -53,44 +59,100 @@
     }
   }
 
-  function applyState(root, s){
-    const set = (k,v)=>{ const el=$(`[data-control="${k}"]`,root); if(el) el.value=v; };
-    set("preset", s.preset);
-    set("drive", s.drive);
-    set("tone", s.tone);
-    set("width", s.width);
-    set("comp", s.comp);
-    set("mix", s.mix);
-    set("output", s.output);
+  function getVal(root, key){
+    const input = $(`input[data-control-input="${key}"]`, root);
+    if (!input) return null;
+    const v = Number(input.value);
+    return Number.isFinite(v) ? v : null;
+  }
 
-    const presetSel = $(`[data-control="preset"]`, root);
-    const presetName = $(`[data-readout="presetName"]`, root);
-    if (presetName && presetSel) presetName.textContent = presetSel.selectedOptions?.[0]?.textContent || "Init";
+  function setVal(root, key, value){
+    const input = $(`input[data-control-input="${key}"]`, root);
+    const knob = $(`.knob[data-control="${key}"]`, root);
+    if (!input || !knob) return;
 
-    const ro = (k)=>$(`[data-readout="${k}"]`,root);
-    if (ro("drive")) ro("drive").textContent = fmtPct(s.drive);
-    if (ro("tone")) ro("tone").textContent = fmtPct(s.tone);
-    if (ro("width")) ro("width").textContent = fmtPct(s.width);
-    if (ro("comp")) ro("comp").textContent = fmtPct(s.comp);
-    if (ro("mix")) ro("mix").textContent = fmtPct(s.mix);
-    if (ro("output")) ro("output").textContent = fmtDb(s.output);
+    const min = Number(knob.dataset.min);
+    const max = Number(knob.dataset.max);
+    const step = Number(knob.dataset.step);
+
+    const snapped = snapToStep(clamp(value, min, max), min, step);
+    input.value = String(snapped);
+
+    updateReadout(root, key, snapped);
+    updateKnobVisual(knob, snapped);
+  }
+
+  function snapToStep(v, min, step){
+    if (!step || step <= 0) return v;
+    const steps = Math.round((v - min) / step);
+    return min + steps * step;
+  }
+
+  function updateReadout(root, key, v){
+    const ro = $(`[data-readout="${key}"]`, root);
+    if (!ro) return;
+    ro.textContent = (key === "output") ? fmtDb(v) : fmtPct(v);
+  }
+
+  function updatePresetName(root){
+    const sel = $('[data-control="preset"]', root);
+    const name = $('[data-readout="presetName"]', root);
+    if (sel && name) name.textContent = sel.selectedOptions?.[0]?.textContent || sel.value;
+  }
+
+  function valueToAngle(knob, v){
+    const min = Number(knob.dataset.min);
+    const max = Number(knob.dataset.max);
+    const t = (v - min) / (max - min || 1);
+    return MIN_ANGLE + t * (MAX_ANGLE - MIN_ANGLE);
+  }
+
+  function updateKnobVisual(knob, v){
+    const angle = valueToAngle(knob, v);
+    knob.style.setProperty("--angle", `${angle}deg`);
+    knob.setAttribute("aria-valuenow", String(v));
+  }
+
+  function syncAllKnobs(root){
+    $$(".knob[data-control]", root).forEach(knob => {
+      const key = knob.dataset.control;
+      const v = getVal(root, key);
+      if (v == null) return;
+      updateKnobVisual(knob, v);
+    });
+  }
+
+  function applyState(root, state){
+    // preset select
+    const sel = $('[data-control="preset"]', root);
+    if (sel) sel.value = state.preset;
+
+    // knobs
+    setVal(root, "drive", state.drive);
+    setVal(root, "tone", state.tone);
+    setVal(root, "width", state.width);
+    setVal(root, "comp", state.comp);
+    setVal(root, "mix", state.mix);
+    setVal(root, "output", state.output);
+
+    updatePresetName(root);
+    syncAllKnobs(root);
   }
 
   function readState(root){
-    const g = k => Number($(`[data-control="${k}"]`,root)?.value);
-    const preset = $(`[data-control="preset"]`,root)?.value || "init";
+    const preset = $('[data-control="preset"]', root)?.value || "init";
     return {
       preset,
-      drive: g("drive")||0,
-      tone: g("tone")||50,
-      width: g("width")||100,
-      comp: g("comp")||0,
-      mix: g("mix")||100,
-      output: Number.isFinite(g("output")) ? g("output") : 0
+      drive:  getVal(root,"drive")  ?? 0,
+      tone:   getVal(root,"tone")   ?? 50,
+      width:  getVal(root,"width")  ?? 100,
+      comp:   getVal(root,"comp")   ?? 0,
+      mix:    getVal(root,"mix")    ?? 100,
+      output: getVal(root,"output") ?? 0
     };
   }
 
-  // Meter sim
+  // ============ Meter Sim ============
   let meterRAF = null;
   let playing = false;
   let levelL = 0, levelR = 0;
@@ -101,9 +163,9 @@
     const L = $('[data-meter="l"]', root);
     const R = $('[data-meter="r"]', root);
 
-    const drive = Number($('[data-control="drive"]', root)?.value ?? 0);
-    const comp  = Number($('[data-control="comp"]', root)?.value ?? 0);
-    const out   = Number($('[data-control="output"]', root)?.value ?? 0);
+    const drive = getVal(root,"drive") ?? 0;
+    const comp  = getVal(root,"comp") ?? 0;
+    const out   = getVal(root,"output") ?? 0;
 
     const intensity = clamp((drive/100)*0.55 + 0.18 + (out/12)*0.10, 0.10, 0.85);
     const squeeze = clamp(1 - (comp/100)*0.55, 0.35, 1);
@@ -157,31 +219,135 @@
     if (status) status.textContent = (root.dataset.power === "on") ? "READY" : "STANDBY";
   }
 
-  // A/B snapshots
+  // ============ A/B ============
   let snapA = null, snapB = null;
-  const store = (root, slot) => {
+
+  const storeSnap = (root, slot) => {
     const s = readState(root);
-    if (slot==="A") snapA = {...s};
-    if (slot==="B") snapB = {...s};
+    if (slot === "A") snapA = { ...s };
+    if (slot === "B") snapB = { ...s };
     const hint = $('[data-readout="hint"]', root);
     if (hint) hint.textContent = `Stored snapshot ${slot}.`;
   };
-  const recall = (root, slot) => {
-    const s = (slot==="A") ? snapA : snapB;
+
+  const recallSnap = (root, slot) => {
+    const s = (slot === "A") ? snapA : snapB;
     const hint = $('[data-readout="hint"]', root);
-    if (!s){ if (hint) hint.textContent = `Nothing stored in ${slot} yet.`; return; }
+    if (!s){
+      if (hint) hint.textContent = `Nothing stored in ${slot} yet.`;
+      return;
+    }
     applyState(root, s);
     if (hint) hint.textContent = `Recalled snapshot ${slot}.`;
   };
+
+  // ============ Knob Interaction ============
+  function attachKnob(knob, root){
+    const key = knob.dataset.control;
+    const input = $(`input[data-control-input="${key}"]`, root);
+    if (!input) return;
+
+    const min = Number(knob.dataset.min);
+    const max = Number(knob.dataset.max);
+    const step = Number(knob.dataset.step);
+
+    const setFromInput = () => {
+      const v = Number(input.value);
+      if (!Number.isFinite(v)) return;
+      updateKnobVisual(knob, v);
+      updateReadout(root, key, v);
+      knob.setAttribute("aria-valuemin", String(min));
+      knob.setAttribute("aria-valuemax", String(max));
+      knob.setAttribute("aria-valuenow", String(v));
+    };
+
+    // keep synced
+    input.addEventListener("input", setFromInput);
+
+    // wheel adjust
+    knob.addEventListener("wheel", (e) => {
+      if (root.dataset.power !== "on") return;
+      e.preventDefault();
+      const delta = Math.sign(e.deltaY) * -1; // up increases
+      const current = Number(input.value);
+      const next = snapToStep(current + delta * step, min, step);
+      setVal(root, key, clamp(next, min, max));
+    }, { passive:false });
+
+    // drag to turn (vertical)
+    let dragging = false;
+    let startY = 0;
+    let startVal = 0;
+
+    const onMove = (e) => {
+      if (!dragging) return;
+      const y = (e.touches?.[0]?.clientY ?? e.clientY);
+      const dy = startY - y; // up = positive
+      const range = max - min;
+      const sensitivity = range / 180; // pixels per full-ish turn
+      const raw = startVal + dy * sensitivity;
+      const next = snapToStep(raw, min, step);
+      setVal(root, key, clamp(next, min, max));
+    };
+
+    const endDrag = () => {
+      if (!dragging) return;
+      dragging = false;
+      document.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseup", endDrag);
+      document.removeEventListener("touchmove", onMove, { passive:false });
+      document.removeEventListener("touchend", endDrag);
+    };
+
+    const startDrag = (e) => {
+      if (root.dataset.power !== "on") return;
+      e.preventDefault();
+      dragging = true;
+      startY = (e.touches?.[0]?.clientY ?? e.clientY);
+      startVal = Number(input.value);
+      document.addEventListener("mousemove", onMove);
+      document.addEventListener("mouseup", endDrag);
+      document.addEventListener("touchmove", onMove, { passive:false });
+      document.addEventListener("touchend", endDrag);
+    };
+
+    knob.addEventListener("mousedown", startDrag);
+    knob.addEventListener("touchstart", startDrag, { passive:false });
+
+    // keyboard
+    knob.addEventListener("keydown", (e) => {
+      if (root.dataset.power !== "on") return;
+
+      const current = Number(input.value);
+      let next = current;
+
+      if (e.key === "ArrowUp" || e.key === "ArrowRight") next = current + step;
+      if (e.key === "ArrowDown" || e.key === "ArrowLeft") next = current - step;
+      if (e.key === "Home") next = min;
+      if (e.key === "End") next = max;
+      if (next !== current){
+        e.preventDefault();
+        setVal(root, key, clamp(next, min, max));
+      }
+    });
+
+    setFromInput();
+  }
 
   document.addEventListener("DOMContentLoaded", () => {
     const root = $("#mmu");
     if (!root) return;
 
     setActiveNav();
+
+    // init defaults
     applyState(root, { preset:"init", ...presetMap.init });
     setPower(root, false);
 
+    // attach knobs
+    $$(".knob[data-control]", root).forEach(knob => attachKnob(knob, root));
+
+    // actions
     root.addEventListener("click", (e) => {
       const btn = e.target.closest("[data-action]");
       if (!btn) return;
@@ -198,10 +364,11 @@
 
       if (action === "play") playMeter(root);
       if (action === "stop") stopMeter(root);
-      if (action === "storeA") store(root,"A");
-      if (action === "recallA") recall(root,"A");
-      if (action === "storeB") store(root,"B");
-      if (action === "recallB") recall(root,"B");
+
+      if (action === "storeA") storeSnap(root, "A");
+      if (action === "recallA") recallSnap(root, "A");
+      if (action === "storeB") storeSnap(root, "B");
+      if (action === "recallB") recallSnap(root, "B");
 
       if (action === "reset"){
         applyState(root, { preset:"init", ...presetMap.init });
@@ -210,26 +377,18 @@
       }
     });
 
-    root.addEventListener("input", (e) => {
-      const el = e.target;
-      if (!el) return;
-
-      if (el.matches('[data-control="preset"]')){
-        const preset = el.value;
+    // preset changes
+    const presetSel = $('[data-control="preset"]', root);
+    if (presetSel){
+      presetSel.addEventListener("input", () => {
+        const preset = presetSel.value;
         const mapped = presetMap[preset] || presetMap.init;
         applyState(root, { preset, ...mapped });
+
         const hint = $('[data-readout="hint"]', root);
         const name = $('[data-readout="presetName"]', root)?.textContent || preset;
         if (hint) hint.textContent = `Loaded preset: ${name}.`;
-        return;
-      }
-
-      if (!el.matches('input.slider[data-control]')) return;
-      const key = el.getAttribute("data-control");
-      const v = Number(el.value);
-      const ro = $(`[data-readout="${key}"]`, root);
-      if (!ro) return;
-      ro.textContent = (key === "output") ? fmtDb(v) : fmtPct(v);
-    });
+      });
+    }
   });
 })();
