@@ -1,166 +1,236 @@
-  <!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MMU — Creative Ecosystem</title>
   <meta name="description" content="MMU: instrumentals, sync-ready assets, editorial, drum kits, song starters, and a live news board." />
-  <link rel="stylesheet" href="assets/styles.css?v=5" />
+  <link rel="stylesheet" href="assets/styles.css?v=100" />
 </head>
 
 <body>
-  <div class="vst">
-    <!-- PLUGIN TOP BAR -->
-    <div class="vst-top">
-      <div>
-        <div class="vst-brand"><span class="dot"></span><span>MMU</span></div>
-        <div class="vst-meta">Creative Ecosystem • v0.1 • GitHub Pages</div>
-      </div>
+  <div class="page">
+    <div class="vst" role="application" aria-label="MMU plugin interface">
 
-      <div class="vst-buttons">
-        <a class="vst-btn" href="news.html">Updates</a>
-        <a class="vst-btn" href="contact.html">Licensing</a>
-        <div class="power" title="Power">⏻</div>
-      </div>
-    </div>
-
-    <div class="vst-body">
-      <!-- LEFT: PRESET BROWSER -->
-      <aside class="browser">
-        <h4>Browser</h4>
-
-        <a class="preset" href="instrumentals.html">
-          <div>Instrumentals</div><small>leases + exclusives</small>
-        </a>
-
-        <a class="preset" href="sync.html">
-          <div>Sync</div><small>license-ready</small>
-        </a>
-
-        <a class="preset" href="books.html">
-          <div>Editorial</div><small>ideas + lifestyle</small>
-        </a>
-
-        <a class="preset" href="kits.html">
-          <div>Drum Kits</div><small>tools</small>
-        </a>
-
-        <a class="preset" href="starters.html">
-          <div>Song Starters</div><small>hooks + beds</small>
-        </a>
-
-        <a class="preset" href="news.html">
-          <div>News Board</div><small>announcements</small>
-        </a>
-      </aside>
-
-      <!-- CENTER: DISPLAY -->
-      <main class="display">
-        <div class="screen">
-          <div class="kicker-vst">MMU INTERFACE</div>
-
-          <h1>Create. License. Build.</h1>
-          <p>
-            MMU is a creator-facing ecosystem for music, sync assets, tools, editorial work, and creative drops —
-            designed for collaborators, artists, filmmakers, and builders.
-          </p>
-
-          <div class="actions">
-            <a class="action primary" href="instrumentals.html">Open Instrumentals</a>
-            <a class="action" href="sync.html">Open Sync Catalog</a>
-            <a class="action" href="news.html">What’s New</a>
-          </div>
-
-          <div class="rack">
-            <div class="module">
-              <h3>Instrumentals</h3>
-              <p>Clean packs + exclusives. Session-ready.</p>
-              <div class="mini">
-                <a href="instrumentals.html">Browse</a>
-                <a href="contact.html">Custom</a>
-              </div>
-            </div>
-
-            <div class="module">
-              <h3>Sync</h3>
-              <p>Fast clearance. Clean deliverables.</p>
-              <div class="mini">
-                <a href="sync.html">Browse</a>
-                <a href="contact.html">License</a>
-              </div>
-            </div>
-
-            <div class="module">
-              <h3>Editorial</h3>
-              <p>Articles, lesson plans, philosophy, lifestyle.</p>
-              <div class="mini">
-                <a href="books.html">Open</a>
-                <a href="contact.html">Pitch</a>
-              </div>
-            </div>
-
-            <div class="module">
-              <h3>Tools</h3>
-              <p>Drum kits + song starters to move fast.</p>
-              <div class="mini">
-                <a href="kits.html">Kits</a>
-                <a href="starters.html">Starters</a>
-              </div>
-            </div>
+      <!-- TOP BAR -->
+      <header class="vst-top">
+        <div class="brand">
+          <div class="brandmark" aria-hidden="true"></div>
+          <div class="brandtext">
+            <div class="name">MMU</div>
+            <div class="meta">Creative Ecosystem • v0.1 • GitHub Pages</div>
           </div>
         </div>
-      </main>
 
-      <!-- RIGHT: CONTROL RACK -->
-      <aside class="controls">
-        <h4>Control Rack</h4>
+        <nav class="top-actions" aria-label="Top actions">
+          <a class="chip" href="news.html">Updates</a>
+          <a class="chip" href="contact.html">Licensing</a>
+          <button class="chip power" type="button" aria-label="Power">⏻</button>
+        </nav>
+      </header>
 
-        <div class="control">
-          <label><span>Mood</span><span class="readout">Cinematic</span></label>
-          <input type="range" min="0" max="100" value="62" />
-        </div>
+      <!-- BODY -->
+      <div class="vst-body">
 
-        <div class="control">
-          <label><span>BPM</span><span class="readout">140</span></label>
-          <input type="range" min="60" max="200" value="140" />
-        </div>
+        <!-- LEFT: BROWSER -->
+        <aside class="browser">
+          <div class="panel-title">BROWSER</div>
 
-        <div class="control">
-          <label><span>Key</span><span class="readout">F#</span></label>
-          <input type="range" min="0" max="11" value="6" />
-        </div>
+          <a class="preset" href="instrumentals.html">
+            <div class="row">
+              <strong>Instrumentals</strong>
+              <span class="tag">leases + exclusives</span>
+            </div>
+          </a>
 
-        <div class="control">
-          <label><span>Usage</span><span class="readout">Sync</span></label>
-          <input type="range" min="0" max="100" value="78" />
-        </div>
+          <a class="preset" href="sync.html">
+            <div class="row">
+              <strong>Sync</strong>
+              <span class="tag">license-ready</span>
+            </div>
+          </a>
 
-        <div class="control">
-          <label><span>Quick Action</span><span class="readout">Request</span></label>
-          <div style="display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="action primary" href="contact.html">Send Brief</a>
-            <a class="action" href="sync.html">Find Track</a>
+          <a class="preset" href="books.html">
+            <div class="row">
+              <strong>Editorial</strong>
+              <span class="tag">ideas + lifestyle</span>
+            </div>
+          </a>
+
+          <a class="preset" href="kits.html">
+            <div class="row">
+              <strong>Drum Kits</strong>
+              <span class="tag">tools</span>
+            </div>
+          </a>
+
+          <a class="preset" href="starters.html">
+            <div class="row">
+              <strong>Song Starters</strong>
+              <span class="tag">hooks + beds</span>
+            </div>
+          </a>
+
+          <a class="preset" href="news.html">
+            <div class="row">
+              <strong>News Board</strong>
+              <span class="tag">announcements</span>
+            </div>
+          </a>
+        </aside>
+
+        <!-- CENTER: SCREEN -->
+        <main class="display">
+          <section class="screen">
+            <div class="screen-header">
+              <span class="lcd-pill">MMU INTERFACE</span>
+              <span class="lcd-small">SYS: ONLINE • LAT: 12ms</span>
+            </div>
+
+            <h1>Create. License. Build.</h1>
+
+            <p class="lead">
+              MMU is a creator-facing ecosystem for music, sync assets, tools, editorial work, and creative drops —
+              designed for collaborators, artists, filmmakers, and builders.
+            </p>
+
+            <div class="cta">
+              <a class="btn primary" href="instrumentals.html">Open Instrumentals</a>
+              <a class="btn" href="sync.html">Open Sync Catalog</a>
+              <a class="btn" href="news.html">What’s New</a>
+            </div>
+
+            <div class="rack">
+              <article class="module">
+                <div class="module-top">
+                  <h3>Instrumentals</h3>
+                  <span class="mini-led"></span>
+                </div>
+                <p>Clean packs + exclusives. Session-ready.</p>
+                <div class="mini">
+                  <a href="instrumentals.html">Browse</a>
+                  <a href="contact.html">Custom</a>
+                </div>
+              </article>
+
+              <article class="module">
+                <div class="module-top">
+                  <h3>Sync</h3>
+                  <span class="mini-led"></span>
+                </div>
+                <p>Fast clearance. Clean deliverables.</p>
+                <div class="mini">
+                  <a href="sync.html">Browse</a>
+                  <a href="contact.html">License</a>
+                </div>
+              </article>
+
+              <article class="module">
+                <div class="module-top">
+                  <h3>Editorial</h3>
+                  <span class="mini-led"></span>
+                </div>
+                <p>Articles, lesson plans, philosophy, lifestyle.</p>
+                <div class="mini">
+                  <a href="books.html">Open</a>
+                  <a href="contact.html">Pitch</a>
+                </div>
+              </article>
+
+              <article class="module">
+                <div class="module-top">
+                  <h3>Tools</h3>
+                  <span class="mini-led"></span>
+                </div>
+                <p>Drum kits + song starters to move fast.</p>
+                <div class="mini">
+                  <a href="kits.html">Kits</a>
+                  <a href="starters.html">Starters</a>
+                </div>
+              </article>
+            </div>
+          </section>
+        </main>
+
+        <!-- RIGHT: CONTROL RACK -->
+        <aside class="controls">
+          <div class="panel-title">CONTROL RACK</div>
+
+          <div class="control">
+            <div class="control-top">
+              <span>Mood</span><span class="readout">Cinematic</span>
+            </div>
+            <input type="range" min="0" max="100" value="62" />
           </div>
+
+          <div class="control">
+            <div class="control-top">
+              <span>BPM</span><span class="readout">140</span>
+            </div>
+            <input type="range" min="60" max="200" value="140" />
+          </div>
+
+          <div class="control">
+            <div class="control-top">
+              <span>Key</span><span class="readout">F#</span>
+            </div>
+            <input type="range" min="0" max="11" value="6" />
+          </div>
+
+          <div class="control">
+            <div class="control-top">
+              <span>Usage</span><span class="readout">Sync</span>
+            </div>
+            <input type="range" min="0" max="100" value="78" />
+          </div>
+
+          <div class="control">
+            <div class="control-top">
+              <span>Quick Action</span><span class="readout">Request</span>
+            </div>
+            <div class="quick">
+              <a class="btn primary small" href="contact.html">Send Brief</a>
+              <a class="btn small" href="sync.html">Find Track</a>
+            </div>
+          </div>
+        </aside>
+
+      </div>
+
+      <!-- TRANSPORT -->
+      <footer class="transport" aria-label="Transport">
+        <div class="transport-left">
+          <button class="tbtn" type="button" aria-label="Previous">⏮</button>
+          <button class="tbtn" type="button" aria-label="Play">▶</button>
+          <button class="tbtn" type="button" aria-label="Stop">■</button>
+          <button class="tbtn" type="button" aria-label="A/B">A/B</button>
         </div>
-      </aside>
-    </div>
 
-    <!-- TRANSPORT -->
-    <div class="transport">
-      <div class="left">
-        <span class="vst-btn">⏮</span>
-        <span class="vst-btn">▶</span>
-        <span class="vst-btn">■</span>
-        <span class="vst-btn">A/B</span>
-      </div>
+        <div class="meter" aria-hidden="true">
+          <span></span>
+        </div>
 
-      <div class="meter"><span></span></div>
+        <div class="transport-right">
+          <span class="lcd-small">Output</span>
+          <span class="outdb">-6.0 dB</span>
+        </div>
+      </footer>
 
-      <div class="right">
-        <span class="vst-meta">Output</span>
-        <span class="vst-btn">-6.0 dB</span>
-      </div>
     </div>
   </div>
+
+  <script>
+    // tiny animated meter just for life
+    (function(){
+      const bar = document.querySelector('.meter span');
+      if(!bar) return;
+      let t = 0;
+      setInterval(() => {
+        t += 0.12;
+        const v = 20 + Math.floor((Math.sin(t) * 0.5 + 0.5) * 75); // 20..95
+        bar.style.width = v + '%';
+      }, 60);
+    })();
+  </script>
 </body>
 </html>
