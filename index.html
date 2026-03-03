@@ -41,7 +41,7 @@
           <a class="nav__link" href="index.html">Home</a>
           <a class="nav__link" href="instrumentals.html">Instrumentals</a>
           <a class="nav__link" href="sync.html">Sync</a>
-          <a class="nav__link" href="books.html">Editorial</a>
+          <a class="nav__link" href="editorial.html">Editorial</a>
           <a class="nav__link" href="kits.html">Kits</a>
           <a class="nav__link" href="starters.html">Starters</a>
           <a class="nav__link" href="news.html">News</a>
@@ -52,7 +52,7 @@
 
     <section class="mmu__panel">
       <!-- LEFT: screen -->
-      <section class="card">
+      <section class="card card--tweed">
         <div class="card__glass">
           <div class="row">
             <div class="title">MMU MAIN</div>
@@ -63,9 +63,9 @@
           </div>
 
           <div class="content">
-            <div class="block">
+            <div class="block block--metal">
               <div class="label">Preset</div>
-              <div style="display:flex; gap:10px; margin-top:10px; align-items:center;">
+              <div class="presetbar">
                 <select class="select" data-control="preset" disabled>
                   <option value="init">Init</option>
                   <option value="warm">Warm Tape</option>
@@ -77,7 +77,7 @@
               </div>
             </div>
 
-            <div class="block">
+            <div class="block block--tweed">
               <div class="meters__head">
                 <div class="label">Output Meter</div>
                 <div class="transport">
@@ -94,83 +94,117 @@
               <div class="legend"><span>LIN</span><span>-12</span><span>-6</span><span>0</span><span>CLIP</span></div>
             </div>
 
-            <div class="block">
+            <div class="block block--metal">
               <div class="label">A / B</div>
-              <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; align-items:center;">
+              <div class="abrow">
                 <button class="btn" type="button" data-action="storeA" disabled>STORE A</button>
                 <button class="btn" type="button" data-action="recallA" disabled>RECALL A</button>
-                <span style="width:1px; height:24px; background:rgba(255,255,255,.10);"></span>
+                <span class="vdiv" aria-hidden="true"></span>
                 <button class="btn" type="button" data-action="storeB" disabled>STORE B</button>
                 <button class="btn" type="button" data-action="recallB" disabled>RECALL B</button>
               </div>
-              <div style="margin-top:10px; color:rgba(255,255,255,.55); font-size:12px;" data-readout="hint">
-                Power on to enable controls.
-              </div>
+              <div class="hint" data-readout="hint">Power on to enable controls.</div>
             </div>
           </div>
         </div>
       </section>
 
       <!-- RIGHT: controls -->
-      <section class="card controls">
+      <section class="card controls card--metal">
         <div class="controls__header">
           <div class="label">Controls</div>
           <button class="btn btn--ghost" type="button" data-action="reset" disabled>RESET</button>
         </div>
 
-        <div class="grid">
-          <div class="control">
+        <div class="grid grid--knobs">
+          <!-- DRIVE -->
+          <div class="control control--knob">
             <div class="control__top">
               <span class="control__name">Drive</span>
               <span class="control__value" data-readout="drive">0%</span>
             </div>
-            <input class="slider" type="range" min="0" max="100" value="0" step="1" data-control="drive" disabled />
+            <div class="knobrow">
+              <div class="knob" tabindex="0" role="slider"
+                   aria-label="Drive" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+                   data-control="drive" data-min="0" data-max="100" data-step="1" data-unit="%"></div>
+              <input class="knob__input" type="range" min="0" max="100" step="1" value="0" data-control-input="drive" disabled />
+            </div>
           </div>
 
-          <div class="control">
+          <!-- TONE -->
+          <div class="control control--knob">
             <div class="control__top">
               <span class="control__name">Tone</span>
               <span class="control__value" data-readout="tone">50%</span>
             </div>
-            <input class="slider" type="range" min="0" max="100" value="50" step="1" data-control="tone" disabled />
+            <div class="knobrow">
+              <div class="knob" tabindex="0" role="slider"
+                   aria-label="Tone" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"
+                   data-control="tone" data-min="0" data-max="100" data-step="1" data-unit="%"></div>
+              <input class="knob__input" type="range" min="0" max="100" step="1" value="50" data-control-input="tone" disabled />
+            </div>
           </div>
 
-          <div class="control">
+          <!-- WIDTH -->
+          <div class="control control--knob">
             <div class="control__top">
               <span class="control__name">Width</span>
               <span class="control__value" data-readout="width">100%</span>
             </div>
-            <input class="slider" type="range" min="0" max="200" value="100" step="1" data-control="width" disabled />
+            <div class="knobrow">
+              <div class="knob" tabindex="0" role="slider"
+                   aria-label="Width" aria-valuemin="0" aria-valuemax="200" aria-valuenow="100"
+                   data-control="width" data-min="0" data-max="200" data-step="1" data-unit="%"></div>
+              <input class="knob__input" type="range" min="0" max="200" step="1" value="100" data-control-input="width" disabled />
+            </div>
           </div>
 
-          <div class="control">
+          <!-- COMP -->
+          <div class="control control--knob">
             <div class="control__top">
               <span class="control__name">Comp</span>
               <span class="control__value" data-readout="comp">0%</span>
             </div>
-            <input class="slider" type="range" min="0" max="100" value="0" step="1" data-control="comp" disabled />
+            <div class="knobrow">
+              <div class="knob" tabindex="0" role="slider"
+                   aria-label="Comp" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+                   data-control="comp" data-min="0" data-max="100" data-step="1" data-unit="%"></div>
+              <input class="knob__input" type="range" min="0" max="100" step="1" value="0" data-control-input="comp" disabled />
+            </div>
           </div>
 
-          <div class="control">
+          <!-- MIX -->
+          <div class="control control--knob">
             <div class="control__top">
               <span class="control__name">Mix</span>
               <span class="control__value" data-readout="mix">100%</span>
             </div>
-            <input class="slider" type="range" min="0" max="100" value="100" step="1" data-control="mix" disabled />
+            <div class="knobrow">
+              <div class="knob" tabindex="0" role="slider"
+                   aria-label="Mix" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100"
+                   data-control="mix" data-min="0" data-max="100" data-step="1" data-unit="%"></div>
+              <input class="knob__input" type="range" min="0" max="100" step="1" value="100" data-control-input="mix" disabled />
+            </div>
           </div>
 
-          <div class="control">
+          <!-- OUTPUT -->
+          <div class="control control--knob">
             <div class="control__top">
               <span class="control__name">Output</span>
               <span class="control__value" data-readout="output">+0.0 dB</span>
             </div>
-            <input class="slider" type="range" min="-12" max="12" value="0" step="0.5" data-control="output" disabled />
+            <div class="knobrow">
+              <div class="knob knob--db" tabindex="0" role="slider"
+                   aria-label="Output" aria-valuemin="-12" aria-valuemax="12" aria-valuenow="0"
+                   data-control="output" data-min="-12" data-max="12" data-step="0.5" data-unit="dB"></div>
+              <input class="knob__input" type="range" min="-12" max="12" step="0.5" value="0" data-control-input="output" disabled />
+            </div>
           </div>
         </div>
 
         <div class="footer">
           <div>MMU v1.0</div>
-          <div class="dim">VST-style UI • GitHub Pages</div>
+          <div class="dim">Metal • Tweed • Wood • Knobs</div>
         </div>
       </section>
     </section>
