@@ -3,234 +3,177 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MMU — Creative Ecosystem</title>
-  <meta name="description" content="MMU: instrumentals, sync-ready assets, editorial, drum kits, song starters, and a live news board." />
-  <link rel="stylesheet" href="assets/styles.css?v=100" />
+  <title>MMU</title>
+  <meta name="description" content="MMU — VST-style homepage UI." />
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script src="assets/mm.js" defer></script>
 </head>
-
 <body>
-  <div class="page">
-    <div class="vst" role="application" aria-label="MMU plugin interface">
-
-      <!-- TOP BAR -->
-      <header class="vst-top">
-        <div class="brand">
-          <div class="brandmark" aria-hidden="true"></div>
-          <div class="brandtext">
-            <div class="name">MMU</div>
-            <div class="meta">Creative Ecosystem • v0.1 • GitHub Pages</div>
-          </div>
+  <main class="mmu" id="mmu" data-power="off">
+    <header class="mmu__top">
+      <div class="brand">
+        <div class="brand__mark" aria-hidden="true"></div>
+        <div class="brand__text">
+          <div class="brand__name">MMU</div>
+          <div class="brand__tag">Micah Music Unit</div>
         </div>
-
-        <nav class="top-actions" aria-label="Top actions">
-          <a class="chip" href="news.html">Updates</a>
-          <a class="chip" href="contact.html">Licensing</a>
-          <button class="chip power" type="button" aria-label="Power">⏻</button>
-        </nav>
-      </header>
-
-      <!-- BODY -->
-      <div class="vst-body">
-
-        <!-- LEFT: BROWSER -->
-        <aside class="browser">
-          <div class="panel-title">BROWSER</div>
-
-          <a class="preset" href="instrumentals.html">
-            <div class="row">
-              <strong>Instrumentals</strong>
-              <span class="tag">leases + exclusives</span>
-            </div>
-          </a>
-
-          <a class="preset" href="sync.html">
-            <div class="row">
-              <strong>Sync</strong>
-              <span class="tag">license-ready</span>
-            </div>
-          </a>
-
-          <a class="preset" href="books.html">
-            <div class="row">
-              <strong>Editorial</strong>
-              <span class="tag">ideas + lifestyle</span>
-            </div>
-          </a>
-
-          <a class="preset" href="kits.html">
-            <div class="row">
-              <strong>Drum Kits</strong>
-              <span class="tag">tools</span>
-            </div>
-          </a>
-
-          <a class="preset" href="starters.html">
-            <div class="row">
-              <strong>Song Starters</strong>
-              <span class="tag">hooks + beds</span>
-            </div>
-          </a>
-
-          <a class="preset" href="news.html">
-            <div class="row">
-              <strong>News Board</strong>
-              <span class="tag">announcements</span>
-            </div>
-          </a>
-        </aside>
-
-        <!-- CENTER: SCREEN -->
-        <main class="display">
-          <section class="screen">
-            <div class="screen-header">
-              <span class="lcd-pill">MMU INTERFACE</span>
-              <span class="lcd-small">SYS: ONLINE • LAT: 12ms</span>
-            </div>
-
-            <h1>Create. License. Build.</h1>
-
-            <p class="lead">
-              MMU is a creator-facing ecosystem for music, sync assets, tools, editorial work, and creative drops —
-              designed for collaborators, artists, filmmakers, and builders.
-            </p>
-
-            <div class="cta">
-              <a class="btn primary" href="instrumentals.html">Open Instrumentals</a>
-              <a class="btn" href="sync.html">Open Sync Catalog</a>
-              <a class="btn" href="news.html">What’s New</a>
-            </div>
-
-            <div class="rack">
-              <article class="module">
-                <div class="module-top">
-                  <h3>Instrumentals</h3>
-                  <span class="mini-led"></span>
-                </div>
-                <p>Clean packs + exclusives. Session-ready.</p>
-                <div class="mini">
-                  <a href="instrumentals.html">Browse</a>
-                  <a href="contact.html">Custom</a>
-                </div>
-              </article>
-
-              <article class="module">
-                <div class="module-top">
-                  <h3>Sync</h3>
-                  <span class="mini-led"></span>
-                </div>
-                <p>Fast clearance. Clean deliverables.</p>
-                <div class="mini">
-                  <a href="sync.html">Browse</a>
-                  <a href="contact.html">License</a>
-                </div>
-              </article>
-
-              <article class="module">
-                <div class="module-top">
-                  <h3>Editorial</h3>
-                  <span class="mini-led"></span>
-                </div>
-                <p>Articles, lesson plans, philosophy, lifestyle.</p>
-                <div class="mini">
-                  <a href="books.html">Open</a>
-                  <a href="contact.html">Pitch</a>
-                </div>
-              </article>
-
-              <article class="module">
-                <div class="module-top">
-                  <h3>Tools</h3>
-                  <span class="mini-led"></span>
-                </div>
-                <p>Drum kits + song starters to move fast.</p>
-                <div class="mini">
-                  <a href="kits.html">Kits</a>
-                  <a href="starters.html">Starters</a>
-                </div>
-              </article>
-            </div>
-          </section>
-        </main>
-
-        <!-- RIGHT: CONTROL RACK -->
-        <aside class="controls">
-          <div class="panel-title">CONTROL RACK</div>
-
-          <div class="control">
-            <div class="control-top">
-              <span>Mood</span><span class="readout">Cinematic</span>
-            </div>
-            <input type="range" min="0" max="100" value="62" />
-          </div>
-
-          <div class="control">
-            <div class="control-top">
-              <span>BPM</span><span class="readout">140</span>
-            </div>
-            <input type="range" min="60" max="200" value="140" />
-          </div>
-
-          <div class="control">
-            <div class="control-top">
-              <span>Key</span><span class="readout">F#</span>
-            </div>
-            <input type="range" min="0" max="11" value="6" />
-          </div>
-
-          <div class="control">
-            <div class="control-top">
-              <span>Usage</span><span class="readout">Sync</span>
-            </div>
-            <input type="range" min="0" max="100" value="78" />
-          </div>
-
-          <div class="control">
-            <div class="control-top">
-              <span>Quick Action</span><span class="readout">Request</span>
-            </div>
-            <div class="quick">
-              <a class="btn primary small" href="contact.html">Send Brief</a>
-              <a class="btn small" href="sync.html">Find Track</a>
-            </div>
-          </div>
-        </aside>
-
       </div>
 
-      <!-- TRANSPORT -->
-      <footer class="transport" aria-label="Transport">
-        <div class="transport-left">
-          <button class="tbtn" type="button" aria-label="Previous">⏮</button>
-          <button class="tbtn" type="button" aria-label="Play">▶</button>
-          <button class="tbtn" type="button" aria-label="Stop">■</button>
-          <button class="tbtn" type="button" aria-label="A/B">A/B</button>
+      <div class="topbar">
+        <div class="topbar__group">
+          <button class="btn btn--power" type="button" data-action="power" aria-pressed="false">
+            <span class="led" aria-hidden="true"></span>
+            POWER
+          </button>
+
+          <div class="pill">
+            <span class="pill__label">CPU</span>
+            <span class="pill__value" data-readout="cpu">0%</span>
+          </div>
+
+          <div class="pill">
+            <span class="pill__label">OUT</span>
+            <span class="pill__value" data-readout="out">-∞ dB</span>
+          </div>
         </div>
 
-        <div class="meter" aria-hidden="true">
-          <span></span>
+        <nav class="nav" aria-label="MMU pages">
+          <a class="nav__link" href="index.html">Home</a>
+          <a class="nav__link" href="instrumentals.html">Instrumentals</a>
+          <a class="nav__link" href="sync.html">Sync</a>
+          <a class="nav__link" href="books.html">Editorial</a>
+          <a class="nav__link" href="kits.html">Kits</a>
+          <a class="nav__link" href="starters.html">Starters</a>
+          <a class="nav__link" href="news.html">News</a>
+          <a class="nav__link" href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="mmu__panel">
+      <!-- LEFT: screen -->
+      <section class="card">
+        <div class="card__glass">
+          <div class="row">
+            <div class="title">MMU MAIN</div>
+            <div class="status">
+              <span class="statusdot" aria-hidden="true"></span>
+              <span data-readout="status">STANDBY</span>
+            </div>
+          </div>
+
+          <div class="content">
+            <div class="block">
+              <div class="label">Preset</div>
+              <div style="display:flex; gap:10px; margin-top:10px; align-items:center;">
+                <select class="select" data-control="preset" disabled>
+                  <option value="init">Init</option>
+                  <option value="warm">Warm Tape</option>
+                  <option value="punch">Punch Comp</option>
+                  <option value="wide">Wide Air</option>
+                  <option value="club">Club Smash</option>
+                </select>
+                <div class="readout" data-readout="presetName">Init</div>
+              </div>
+            </div>
+
+            <div class="block">
+              <div class="meters__head">
+                <div class="label">Output Meter</div>
+                <div class="transport">
+                  <button class="btn btn--small" type="button" data-action="play" disabled>PLAY</button>
+                  <button class="btn btn--small" type="button" data-action="stop" disabled>STOP</button>
+                </div>
+              </div>
+
+              <div class="meter" role="img" aria-label="Animated level meter">
+                <div class="meter__rail"><div class="meter__fill" data-meter="l"></div></div>
+                <div class="meter__rail"><div class="meter__fill" data-meter="r"></div></div>
+              </div>
+
+              <div class="legend"><span>LIN</span><span>-12</span><span>-6</span><span>0</span><span>CLIP</span></div>
+            </div>
+
+            <div class="block">
+              <div class="label">A / B</div>
+              <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; align-items:center;">
+                <button class="btn" type="button" data-action="storeA" disabled>STORE A</button>
+                <button class="btn" type="button" data-action="recallA" disabled>RECALL A</button>
+                <span style="width:1px; height:24px; background:rgba(255,255,255,.10);"></span>
+                <button class="btn" type="button" data-action="storeB" disabled>STORE B</button>
+                <button class="btn" type="button" data-action="recallB" disabled>RECALL B</button>
+              </div>
+              <div style="margin-top:10px; color:rgba(255,255,255,.55); font-size:12px;" data-readout="hint">
+                Power on to enable controls.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT: controls -->
+      <section class="card controls">
+        <div class="controls__header">
+          <div class="label">Controls</div>
+          <button class="btn btn--ghost" type="button" data-action="reset" disabled>RESET</button>
         </div>
 
-        <div class="transport-right">
-          <span class="lcd-small">Output</span>
-          <span class="outdb">-6.0 dB</span>
+        <div class="grid">
+          <div class="control">
+            <div class="control__top">
+              <span class="control__name">Drive</span>
+              <span class="control__value" data-readout="drive">0%</span>
+            </div>
+            <input class="slider" type="range" min="0" max="100" value="0" step="1" data-control="drive" disabled />
+          </div>
+
+          <div class="control">
+            <div class="control__top">
+              <span class="control__name">Tone</span>
+              <span class="control__value" data-readout="tone">50%</span>
+            </div>
+            <input class="slider" type="range" min="0" max="100" value="50" step="1" data-control="tone" disabled />
+          </div>
+
+          <div class="control">
+            <div class="control__top">
+              <span class="control__name">Width</span>
+              <span class="control__value" data-readout="width">100%</span>
+            </div>
+            <input class="slider" type="range" min="0" max="200" value="100" step="1" data-control="width" disabled />
+          </div>
+
+          <div class="control">
+            <div class="control__top">
+              <span class="control__name">Comp</span>
+              <span class="control__value" data-readout="comp">0%</span>
+            </div>
+            <input class="slider" type="range" min="0" max="100" value="0" step="1" data-control="comp" disabled />
+          </div>
+
+          <div class="control">
+            <div class="control__top">
+              <span class="control__name">Mix</span>
+              <span class="control__value" data-readout="mix">100%</span>
+            </div>
+            <input class="slider" type="range" min="0" max="100" value="100" step="1" data-control="mix" disabled />
+          </div>
+
+          <div class="control">
+            <div class="control__top">
+              <span class="control__name">Output</span>
+              <span class="control__value" data-readout="output">+0.0 dB</span>
+            </div>
+            <input class="slider" type="range" min="-12" max="12" value="0" step="0.5" data-control="output" disabled />
+          </div>
         </div>
-      </footer>
 
-    </div>
-  </div>
-
-  <script>
-    // tiny animated meter just for life
-    (function(){
-      const bar = document.querySelector('.meter span');
-      if(!bar) return;
-      let t = 0;
-      setInterval(() => {
-        t += 0.12;
-        const v = 20 + Math.floor((Math.sin(t) * 0.5 + 0.5) * 75); // 20..95
-        bar.style.width = v + '%';
-      }, 60);
-    })();
-  </script>
+        <div class="footer">
+          <div>MMU v1.0</div>
+          <div class="dim">VST-style UI • GitHub Pages</div>
+        </div>
+      </section>
+    </section>
+  </main>
 </body>
 </html>
